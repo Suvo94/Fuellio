@@ -6,6 +6,9 @@ import tailwindcss from '@tailwindcss/vite'
 import netlify from '@netlify/vite-plugin-tanstack-start'
 
 const config = defineConfig({
+  server: {
+    allowedHosts: ['e2b.app', '.e2b.app'],
+  },
   plugins: [
     viteTsConfigPaths({
       projects: ['./tsconfig.json'],

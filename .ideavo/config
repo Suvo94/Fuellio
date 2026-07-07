@@ -1,0 +1,48 @@
+{
+  "systemSetup": [],
+  "templateName": "custom",
+  "projectDependencies": [
+    {
+      "name": "Install Dependencies",
+      "command": "npm ci"
+    }
+  ],
+  "codeChecks": [
+    {
+      "name": "Type Check",
+      "command": "npx tsc --noEmit"
+    }
+  ],
+  "buildSteps": [
+    {
+      "name": "Build Project",
+      "command": "npm run build"
+    }
+  ],
+  "runStep": [
+    {
+      "name": "Run Dev Server",
+      "command": "npm run dev -- --host 0.0.0.0 --port 3000",
+      "port": "3000"
+    }
+  ],
+  "deploySteps": [
+    {
+      "name": "Deploy Netlify",
+      "command": "npx netlify deploy --build --prod"
+    }
+  ],
+  "cleanupFiles": [
+    "node_modules",
+    "dist",
+    ".netlify",
+    ".tanstack"
+  ],
+  "packageManager": "npm",
+  "envPaths": [
+    {
+      "name": "default",
+      "path": ".env"
+    }
+  ]
+}
